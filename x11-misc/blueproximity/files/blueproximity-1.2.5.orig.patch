@@ -16,6 +16,25 @@ diff -aur blueproximity-1.2.5.orig.pristine//proximity.py blueproximity-1.2.5.or
  
  
  # system includes
+@@ -27,6 +27,9 @@
+ # or to '/usr/share/blueproximity/' for packaged version
+ dist_path = '/usr/share/blueproximity/' 
+ 
++## setting dev_id = 0 to query the first available bt adapter
++dev_id=0
++
+ 
+ # system includes
+ import os
+@@ -1124,7 +1124,7 @@
+     def run_cycle(self,dev_mac,dev_channel):
+         # reads the distance and averages it over the ringbuffer
+         self.ringbuffer_pos = (self.ringbuffer_pos + 1) % self.ringbuffer_size
+-        self.ringbuffer[self.ringbuffer_pos] = self.get_proximity_once(dev_mac)
++        self.ringbuffer[self.ringbuffer_pos] = self.get_proximity_by_mac(dev_mac)
+         ret_val = 0
+         for val in self.ringbuffer:
+             ret_val = ret_val + val
 @@ -1257,7 +1257,7 @@
          if filename.endswith('.conf'):
              try:
