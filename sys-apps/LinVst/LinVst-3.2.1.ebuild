@@ -23,7 +23,7 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 DEPEND="${RDEPEND}"
 
 src_compile () {
-	emake 
+	emake EMBEDRESIZE=1 
 	pushd convert
 	emake
 	emake -f Makefile-linconverttree
@@ -36,4 +36,5 @@ src_install () {
 	emake DESTDIR="${D}" -f Makefile-linconverttree install
 	emake DESTDIR="${D}" install
 	popd
+	dobin vst/linvst.so
 }
