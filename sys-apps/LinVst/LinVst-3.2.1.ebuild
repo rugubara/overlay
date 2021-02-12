@@ -22,4 +22,18 @@ RDEPEND="alsa? ( media-libs/alsa-lib )
 	pulseaudio? ( media-sound/pulseaudio )"
 DEPEND="${RDEPEND}"
 
+src_compile () {
+	emake 
+	pushd convert
+	emake
+	emake -f Makefile-linconverttree
+	popd
+}
 
+src_install () {
+	emake DESTDIR="${D}" install
+	pushd convert
+	emake DESTDIR="${D}" -f Makefile-linconverttree install
+	emake DESTDIR="${D}" install
+	popd
+}
