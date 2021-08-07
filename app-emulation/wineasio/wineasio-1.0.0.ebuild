@@ -10,6 +10,9 @@ HOMEPAGE="https://github.com/wineasio/wineasio"
 SRC_URI="https://github.com/wineasio/${PN}/releases/download/v${PV}/${P}.tar.gz"
 KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror"
+PATCHES=( 
+	"${FILESDIR}/00-fakedll.patch" 
+)
 LICENSE="GPL-2"
 IUSE=""
 SLOT="0"
@@ -25,17 +28,20 @@ pkg_setup() {
 }
 
 src_prepare() {
-	multilib_copy_sources
 	default
+	multilib_copy_sources
 }
 
 multilib_src_compile() {
 	emake ${MULTILIB_ABI_FLAG: -2}
+	
 }
 
 multilib_src_install() {
 	exeinto /usr/$(get_libdir)/${WINETARGET}/wine/${MULTILIB_ABI_FLAG: 4}-unix
 	doexe build${MULTILIB_ABI_FLAG: -2}/*.so
+	exeinto /usr/$(get_libdir)/${WINETARGET}/wine/fakedlls
+	doexe build${MULTILIB_ABI_FLAG: -2}/*.dll
 }
 
 pkg_postinst() {

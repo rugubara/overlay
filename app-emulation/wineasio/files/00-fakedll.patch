@@ -1,0 +1,9 @@
+--- a/Makefile.mk	2021-05-05 15:30:27.525682544 +0100
++++ b/Makefile.mk	2021-05-05 15:21:43.923147193 +0100
+@@ -102,3 +102,4 @@
+ 
+ build$(M)/$(wineasio_dll_MODULE).so: $(wineasio_dll_OBJS)
+ 	$(WINECC) $(wineasio_dll_LDFLAGS) -o $@ $(wineasio_dll_OBJS) $(wineasio_dll_LIBRARY_PATH) $(DEFLIB) $(wineasio_dll_DLLS:%=-l%) $(wineasio_dll_LIBRARIES:%=-l%)
++	winebuild -m$(M) --dll --fake-module -E wineasio.dll.spec $(wineasio_dll_OBJS) > build$(M)/wineasio.dll
+
+
