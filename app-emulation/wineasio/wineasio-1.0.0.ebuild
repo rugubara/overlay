@@ -26,7 +26,6 @@ pkg_setup() {
 
 src_prepare() {
 	multilib_copy_sources
-#	cp /opt/asiosdk/common/asio.h .
 	default
 }
 
@@ -49,7 +48,7 @@ pkg_postinst() {
 	elog "will register the 32 bit driver in a 64 bit prefix, use the following command"
 	elog "to register the 64 bit driver in a 64 bit wineprefix:"
 	elog
-	elog "# wine64 regsvr32 wineaiso.dll"
+	elog "# wine64 regsvr32 wineasio.dll"
 	elog
 	elog "regsvr32 registers the ASIO COM object in the default prefix "~/.wine"."
 	elog "To use another prefix specify it explicitly, like:"
