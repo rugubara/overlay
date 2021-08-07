@@ -14,8 +14,7 @@ LICENSE="GPL-2"
 IUSE=""
 SLOT="0"
 
-DEPEND="media-libs/asiosdk
-	virtual/wine"
+DEPEND="virtual/wine"
 RDEPEND="virtual/jack[${MULTILIB_USEDEP}]"
 
 #S="${WORKDIR}/${PN}"
