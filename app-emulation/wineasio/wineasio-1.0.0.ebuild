@@ -35,7 +35,7 @@ multilib_src_compile() {
 }
 
 multilib_src_install() {
-	exeinto /usr/$(get_libdir)/${WINETARGET}/wine
+	exeinto /usr/$(get_libdir)/${WINETARGET}/wine/${MULTILIB_ABI_FLAG: 4}-unix
 	doexe build${MULTILIB_ABI_FLAG: -2}/*.so
 }
 
