@@ -17,7 +17,8 @@ KEYWORDS="~amd64"
 RESTRICT="mirror"
 IUSE="wireguard"
 
-DEPEND="dev-libs/libxslt 
+RDEPEND="acct-group/nordvpn
+	dev-libs/libxslt 
 	net-firewall/iptables
 	net-vpn/openvpn  
 	wireguard? ( virtual/wireguard )"
