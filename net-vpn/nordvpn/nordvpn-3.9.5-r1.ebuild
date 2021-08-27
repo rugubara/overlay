@@ -17,9 +17,15 @@ KEYWORDS="~amd64"
 RESTRICT="mirror"
 IUSE="wireguard"
 
+DEPEND="app-arch/rpm
+	app-arch/cpio"
 RDEPEND="acct-group/nordvpn
-	dev-libs/libxslt 
 	net-firewall/iptables
+	sys-apps/iproute2
+	app-misc/ca-certificates
+	sys-process/procps
+	dev-libs/libxml2
+	dev-libs/icu
 	net-vpn/openvpn  
 	wireguard? ( virtual/wireguard )"
 
@@ -61,5 +67,6 @@ src_install () {
 
 pkg_postinst() {
         tmpfiles_process nordvpn.conf
+        elog "the user musr be added to nordvpn group to allow usage of NordVPN client"
 }
 
