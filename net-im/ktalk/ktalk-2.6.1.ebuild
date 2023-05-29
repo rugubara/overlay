@@ -3,7 +3,7 @@
 
 EAPI="7"
 
-inherit  desktop
+inherit  desktop xdg-utils
 
 #FETCH_P=${P#-bin}-${PR#r}
 SRC_URI="https://st.skbkontur.ru/content/talk-app/${PN}${PV}amd64.deb -> ${P}.deb"
@@ -44,7 +44,8 @@ src_install () {
 	
 	
 	doins -r opt
-	dosym "opt/Толк/ktalk" usr/bin/ktalk
+	fperms 4755 '/opt/Толк/chrome-sandbox'
+	dosym '/opt/Толк/ktalk' usr/bin/ktalk
 	domenu usr/share/applications/ktalk.desktop
 	for s in 16 32 48 64 128 256 512; 
 		do doicon -s $s "usr/share/icons/hicolor/${s}x${s}/apps/ktalk.png";
