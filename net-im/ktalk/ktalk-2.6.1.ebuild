@@ -45,6 +45,7 @@ src_install () {
 	
 	doins -r opt
 	fperms 4755 '/opt/Толк/chrome-sandbox'
+	fperms 755 '/opt/Толк/ktalk'
 	dosym '/opt/Толк/ktalk' usr/bin/ktalk
 	domenu usr/share/applications/ktalk.desktop
 	for s in 16 32 48 64 128 256 512; 
