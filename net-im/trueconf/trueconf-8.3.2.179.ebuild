@@ -24,11 +24,11 @@ RDEPEND="media-libs/alsa-lib
 	x11-base/xorg-server
 	dev-libs/boost
 	dev-libs/protobuf
-	media-sound/puseaudio
+	media-sound/pulseaudio
 	dev-qt/qtwebengine:5
 	media-libs/speex
 	dev-db/sqlite
-	sys-libs/zlib"  
+	sys-libs/zlib"
 
 
 
