@@ -22,29 +22,21 @@ LICENSE="1CEnterprise_en"
 KEYWORDS="amd64"
 RESTRICT="fetch strip"
 
-#IUSE="+nls"
-#	~app-office/1C_Enterprise-common-${PV}:${SLOT}
-#	~app-office/1C_Enterprise-server-${PV}:${SLOT}
 
-RDEPEND="gui-libs/gtk
-	app-text/enchant
-	media-libs/harfbuzz[icu]
-	media-libs/gstreamer
-	media-plugins/gst-plugins-meta
-	app-crypt/libsecret
-	net-libs/libsoup
-	dev-db/sqlite
-	media-libs/libglvnd
-	x11-libs/libXrender
-	x11-libs/libXfixes
-	dev-libs/libxslt
-	app-misc/geoclue"
 
-DEPEND="${RDEPEND}"
+RDEPEND=""
 
-S="${WORKDIR}"
+DEPEND="${RDEPEND}
+	app-arch/rpm"
+
+#S="${WORKDIR}"
+
+src_unpack() {
+	mkdir ${WORKDIR}/${P}
+	cd ${WORKDIR}/${P}
+	rpm_unpack ${A}
+}
 
 src_install() {
-	dodir /opt /usr
-	dodir /usr/share
+	doins -r opt
 }
