@@ -60,3 +60,11 @@ src_install() {
 	domenu usr/share/applications/{1cv8,1cv8c,1cv8s}-${MY_PV}.desktop
 
 }
+
+pkg_postinst() {
+	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_icon_cache_update
+}
