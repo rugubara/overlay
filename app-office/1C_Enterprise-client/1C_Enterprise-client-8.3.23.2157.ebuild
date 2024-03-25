@@ -53,10 +53,19 @@ src_unpack() {
 }
 
 src_install() {
-	doins -r opt 
-	doins -r usr
-#	mv "${WORKDIR}"/opt/* "${D}"/opt
-#	mv "${WORKDIR}"/usr/share/icons "${D}"/usr/share
+	doins -r opt
+	exeinto /opt/1cv8/x86_64/${PV}
+	for pr in opt/1cv8/x86_64/${PV}/{1cestart,1cv8,1cv8a,1cv8c,1cv8s} 
+	do
+		doexe ${pr}
+	done
+	for size in 16 36 22 32 72 128 96 512 256 192 24 48 64 
+	do
+		for icon in usr/share/icons/hicolor/${size}x${size}/apps/{1cestart,1cv8,1cv8c,1cv8s}-${MY_PV}.png
+		do
+			doicon -s ${size} ${icon}; 
+		done
+	done
 	domenu usr/share/applications/{1cv8,1cv8c,1cv8s}-${MY_PV}.desktop
 
 }
