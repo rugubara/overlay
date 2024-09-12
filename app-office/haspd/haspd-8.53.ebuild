@@ -36,6 +36,10 @@ src_install() {
 	newsbin hasplmd/hasplmd_x86_64 hasplmd
 	systemd_dounit hasplmd/hasplmd.service
 
+	newdoc winehasp/readme.txt winehasp-readme.txt
+	dosbin winehasp/winehasp
+	systemd_dounit winehasp/winehasp.service
+
 	elog "Install phase completed"
 }
 
