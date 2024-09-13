@@ -30,6 +30,8 @@ IUSE="+nls"
 RDEPEND="=app-office/1C_Enterprise-common-${PV}:${SLOT}
 	gui-libs/gtk
 	app-text/enchant:0
+	net-libs/libssh:0/4
+	net-libs/webkit-gtk:4/37
 	media-libs/harfbuzz[icu]
 	media-libs/gstreamer
 	media-plugins/gst-plugins-meta
