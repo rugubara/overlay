@@ -4,7 +4,7 @@
 
 EAPI="7"
 
-inherit rpm desktop 
+inherit rpm desktop xdg-utils
 #inherit eutils pax-utils rpm 
 
 
@@ -28,6 +28,7 @@ IUSE="+nls"
 #	~app-office/1C_Enterprise-server-${PV}:${SLOT}
 
 RDEPEND="=app-office/1C_Enterprise-common-${PV}:${SLOT}
+	=app-office/1C_Enterprise-server-${PV}:${SLOT}
 	gui-libs/gtk
 	app-text/enchant
 	net-libs/libssh:0/4
@@ -73,9 +74,11 @@ src_install() {
 }
 
 pkg_postinst() {
+	xdg_desktop_database_update
 	xdg_icon_cache_update
 }
 
 pkg_postrm() {
+	xdg_desktop_database_update
 	xdg_icon_cache_update
 }
