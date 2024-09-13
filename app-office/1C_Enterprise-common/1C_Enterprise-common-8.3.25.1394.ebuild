@@ -35,6 +35,7 @@ src_unpack() {
 	mkdir ${WORKDIR}/${P}
 	cd ${WORKDIR}/${P}
 	rpm_unpack ${A}
+	rm "opt/1cv8/x86_64/${PV}/libstdc++*"
 }
 
 src_install() {
