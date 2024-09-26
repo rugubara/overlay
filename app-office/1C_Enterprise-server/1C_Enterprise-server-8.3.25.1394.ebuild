@@ -31,7 +31,7 @@ RDEPEND="=app-office/1C_Enterprise-common-${PV}:${SLOT}
 	"
 
 DEPEND="${RDEPEND}
-	acct-grp/grp1cv8
+	acct-group/grp1cv8
 	acct-user/usr1cv8"
 
 #S="${WORKDIR}"
