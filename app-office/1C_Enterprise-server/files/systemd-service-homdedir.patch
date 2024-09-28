@@ -1,0 +1,11 @@
+--- opt/1cv8/x86_64/8.3.25.1394/srv1cv8-8.3.25.1394@.service	2024-08-19 15:51:51.000000000 +0300
++++ opt/1cv8/x86_64/8.3.25.1394/srv1cv8-8.3.25.1394@.service.new	2024-09-28 19:59:31.156841512 +0300
+@@ -31,7 +31,7 @@
+ Environment=SRV1CV8_DEBUG=
+ 
+ # Path to directory with cluster data
+-Environment=SRV1CV8_DATA=/home/usr1cv8/.1cv8/1C/1cv8
++Environment=SRV1CV8_DATA=/var/lib/usr1cv8/.1cv8/1C/1cv8
+ 
+ # Security level:
+ # 0 - default - unprotected connections

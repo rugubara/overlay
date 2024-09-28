@@ -27,6 +27,11 @@ IUSE="+nls"
 #	~app-office/1C_Enterprise-common-${PV}:${SLOT}
 #	~app-office/1C_Enterprise-server-${PV}:${SLOT}
 
+PATCHES=(
+	"${FILESDIR}"/systemd-service-homdedir.patch # update the server workdir to /var/lib/usr1cv8
+)
+
+
 RDEPEND="=app-office/1C_Enterprise-common-${PV}:${SLOT}
 	"
 
@@ -41,6 +46,7 @@ src_unpack() {
 	cd ${WORKDIR}/${P}
 	rpm_unpack ${A}
 }
+
 
 src_install() {
 	doins -r opt
