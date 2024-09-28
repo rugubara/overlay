@@ -54,6 +54,10 @@ src_install() {
 	for i in `find ${WORKDIR}/${P}/opt/1cv8/x86_64/${PV} -executable \! -type d \! -name '*.*' -print`
 		do doexe $i 
 	done
+	insinto /var/1C/licenses
+	touch .keep
+	doins .keep
+	fowners -R usr1cv8:grp1cv8 /var/1C
 
 }
 
