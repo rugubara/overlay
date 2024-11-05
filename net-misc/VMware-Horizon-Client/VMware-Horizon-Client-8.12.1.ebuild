@@ -35,19 +35,24 @@ DEPEND="${RDEPEND}"
 dolib_r() { # accepts the directory to install libraries into /usr/lib
 	if [ -d "${1}" ]; then
 		into "/${1}"
+		exeinto "/${1}"
 		insinto "/${1}"
+		elog "installing to ${1}..." 
 		for f in "${1}"/*; do
 			if [ -d "${f}" ]; then
 				dolib_r "${f}" 
 			else
 				case "${f}" in
 					*.so*)
-						dolib.so "${f}"
+						elog "Installing .so ${f}"
+						doexe "${f}"
 						;;
 					*)
 						if [ -x "${f}" ]; then
-							dobin "${f}"
+							elog "Installing binary ${f}"
+							doexe "${f}"
 						else
+							elog "Installing file ${f}"
 							doins "${f}"
 						fi
 						;;
@@ -70,10 +75,12 @@ src_install() {
 	doins -r "usr/share/X11"
 	doins -r "usr/share/locale"
 	doins -r "usr/share/doc"
-	doicon "usr/share/icons/vmware-view.png"
+	doicon  "usr/share/pixmaps/vmware-view.png"
 	domenu "usr/share/applications/vmware-view.desktop"
 	for f in usr/bin/*; do dobin "${f}"; done
-	dolib_r "usr/lib"
+	dolib.so usr/lib/libpcoip_client.so
+	dolib_r usr/lib/pcoip
+	dolib_r usr/lib/vmware
 
 }
 
