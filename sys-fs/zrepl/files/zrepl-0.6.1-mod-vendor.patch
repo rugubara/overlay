@@ -1,0 +1,11 @@
+--- a/Makefile	2023-09-10 14:13:14.000000000 +0300
++++ b/Makefile	2024-11-26 21:59:29.961602082 +0300
+@@ -22,7 +22,7 @@
+ GOHOSTARCH ?= $(shell bash -c 'source <($(GO) env) && echo "$$GOHOSTARCH"')
+ GO_ENV_VARS := GO111MODULE=on
+ GO_LDFLAGS := "-X github.com/zrepl/zrepl/version.zreplVersion=$(_ZREPL_VERSION)"
+-GO_MOD_READONLY := -mod=readonly
++GO_MOD_READONLY := -mod=vendor
+ GO_EXTRA_BUILDFLAGS :=
+ GO_BUILDFLAGS := $(GO_MOD_READONLY) $(GO_EXTRA_BUILDFLAGS)
+ GO_BUILD := $(GO_ENV_VARS) $(GO) build $(GO_BUILDFLAGS) -ldflags $(GO_LDFLAGS)
